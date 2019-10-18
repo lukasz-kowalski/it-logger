@@ -25,10 +25,7 @@ export const getLogs: ActionCreator<ThunkResult> = () => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    dispatch({
-      type: LOGS_ERROR,
-      payload: err.response
-    });
+    dispatch(setLogError(err.response.statusText));
   }
 };
 
@@ -51,10 +48,7 @@ export const addLog: ActionCreator<ThunkResult> = (
       payload: data
     });
   } catch (err) {
-    dispatch({
-      type: LOGS_ERROR,
-      payload: err.response
-    });
+    dispatch(setLogError(err.response.statusText));
   }
 };
 
@@ -71,10 +65,7 @@ export const updateLog: ActionCreator<ThunkResult> = (
       payload: res.data
     });
   } catch (err) {
-    dispatch({
-      type: LOGS_ERROR,
-      payload: err.response
-    });
+    dispatch(setLogError(err.response.statusText));
   }
 };
 
@@ -88,7 +79,7 @@ export const searchLogs: ActionCreator<ThunkResult> = (
 
     dispatch({ type: SEARCH_LOGS, payload: res.data });
   } catch (err) {
-    dispatch({ type: LOGS_ERROR, payload: err.response });
+    dispatch(setLogError(err.response.statusText));
   }
 };
 
@@ -105,11 +96,7 @@ export const deleteLog: ActionCreator<ThunkResult> = (
       payload: id
     });
   } catch (err) {
-    dispatch({
-      type: LOGS_ERROR,
-      ADD_LOG,
-      payload: err.response.data
-    });
+    dispatch(setLogError(err.response.statusText));
   }
 };
 
@@ -121,3 +108,5 @@ export const setCurrent: ActionCreator<Action> = (log: Log) => ({
 export const clearCurrent: ActionCreator<Action> = () => ({
   type: CLEAR_CURRENT
 });
+
+const setLogError = (err: string) => ({ type: LOGS_ERROR, payload: err });

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import TechSelectOptions from "../../components/techs/TechSelectOptions";
 import { updateLog } from "../../actions/logActions";
 import { Log } from "../../interfaces/Logs";
 //@ts-ignore
@@ -74,9 +75,7 @@ const EditLogModal: React.FC = () => {
               <option value="" disabled>
                 Select Technician
               </option>
-              <option value="John Doe">John Doe</option>
-              <option value="Sam Smith">Sam Smith</option>
-              <option value="Sara Wilson">Sara Wilson</option>
+              <TechSelectOptions />
             </select>
           </div>
         </div>

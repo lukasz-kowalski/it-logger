@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
+import TechSelectOptions from "../../components/techs/TechSelectOptions";
 import { addLog } from "../../actions/logActions";
 //@ts-ignore
 import M from "materialize-css/dist/js/materialize.min.js";
@@ -67,9 +68,7 @@ const AddLogModal: React.FC = () => {
               <option value="" disabled>
                 Select Technician
               </option>
-              <option value="John Doe">John Doe</option>
-              <option value="Sam Smith">Sam Smith</option>
-              <option value="Sara Wilson">Sara Wilson</option>
+              <TechSelectOptions />
             </select>
           </div>
         </div>

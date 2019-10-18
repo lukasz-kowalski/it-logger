@@ -1,5 +1,5 @@
 export interface Tech {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
 }

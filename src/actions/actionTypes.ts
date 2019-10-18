@@ -1,4 +1,5 @@
 import { Log } from "../interfaces/Logs";
+import { Tech } from "../interfaces/Techs";
 
 export const GET_LOGS = "GET_LOGS";
 export const ADD_LOG = "ADD_LOG";
@@ -13,6 +14,7 @@ export const GET_TECHS = "GET_TECHS";
 export const ADD_TECH = "ADD_TECH";
 export const DELETE_TECH = "DELETE_TECH";
 export const TECHS_ERROR = "TECHS_ERROR";
+export const SET_TECH_LOADING = "SET_LOADING";
 
 interface GetLogs {
   type: typeof GET_LOGS;
@@ -57,6 +59,30 @@ interface LogsError {
   payload: string;
 }
 
+interface GetTechs {
+  type: typeof GET_TECHS;
+  payload: any;
+}
+
+interface AddTech {
+  type: typeof ADD_TECH;
+  payload: Tech;
+}
+
+interface DeleteTech {
+  type: typeof DELETE_TECH;
+  payload: string;
+}
+
+interface TechsError {
+  type: typeof TECHS_ERROR;
+  payload: string;
+}
+
+interface SetTechLoading {
+  type: typeof SET_TECH_LOADING;
+}
+
 export type LogsActions =
   | GetLogs
   | AddLog
@@ -67,3 +93,10 @@ export type LogsActions =
   | SetCurrent
   | ClearCurrent
   | LogsError;
+
+export type TechsActions =
+  | GetTechs
+  | AddTech
+  | DeleteTech
+  | TechsError
+  | SetTechLoading;

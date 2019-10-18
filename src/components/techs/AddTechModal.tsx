@@ -1,8 +1,11 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, MouseEvent } from "react";
+import { useDispatch } from "react-redux";
+import { startAddingTech } from "../../actions/techActions";
 //@ts-ignore
 import M from "materialize-css/dist/js/materialize.min.js";
 
 const AddTechModal: React.FC = () => {
+  const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -12,11 +15,13 @@ const AddTechModal: React.FC = () => {
   const handleLastNameChange = (e: ChangeEvent<HTMLInputElement>) =>
     setLastName(e.target.value);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
     if (!firstName || !lastName) {
       M.toast({ html: "Please enter the first and last name" });
     } else {
-      console.log(firstName, lastName);
+      dispatch(startAddingTech({ firstName, lastName }));
+      M.toast({ html: `${firstName} ${lastName} was added as tech` });
       setFirstName("");
       setLastName("");
     }
